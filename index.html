@@ -3,11 +3,73 @@
   <head>
     <title>Navier Stokes</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.js"></script>
+ 
   </head>
 
   <body>
+ 
+    X Min:<input type="text" id="xmin" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
+    X Max:<input type="text" id="xmax" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
+    Y Min:<input type="text" id="ymin" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
+    Y Max:<input type="text" id="ymax" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
+    Mesh X Value:<input type="text" id="meshx" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>
+    Mesh Y Value:<input type="text" id="meshy" onkeypress='return event.charCode >= 48 && event.charCode <= 57'></input>	      
+   <script>
+ $("#xmin").keypress(function(e) {
+    if(e.which == 13) {
+    var xmin = document.getElementById("xmin").value;
+    }
+ });
+ $("#xmax").keypress(function(e) {
+    if(e.which == 13) {
+    var xmax = document.getElementById("xmax").value;
+    }
+ });
+ $("#ymin").keypress(function(e) {
+    if(e.which == 13) {
+    var ymin = document.getElementById("ymin").value;
+    }
+ });
+ $("#ymax").keypress(function(e) {
+    if(e.which == 13) {
+    var ymax = document.getElementById("ymax").value;
+    }
+ });
+ $("meshx").keypress(function(e) {
+    if(e.which == 13) {
+    var meshx = document.getElementById("meshx").value;
+    }
+ });
+ $("meshy").keypress(function(e) {
+    if(e.which == 13) {
+    var meshy = document.getElementById("meshy").value;
+    }
+ });
+
+
+ var xstep = (xmax-xmin)/meshx;
+ var ystep = (ymax-ymin)/yeshx;
+ 
+
+ var x = [];
+ var y = [];
+ for (var i = xmin; i <= xmax; i=i+xstep) {
+    x.push(i);
+ }
+ for (var i = ymin; i <= ymax; i=i+ystep) {
+    y.push(i);
+ }
+			 
+  </script>
     <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
-    <script type="text/javascript" src="nav.js"></script>
+	    
+    
+    
+    <button onclick="Main()">Execute</button>
+    <script type="text/javascript" src="/Users/Jweinfeld/nav.js"></script>
+    
+    
   </body>
 </html>
 
